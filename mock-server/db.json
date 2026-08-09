@@ -1,20 +1,169 @@
 {
+  "categories": [
+    { "id": 1, "value": "Plumbing", "label": "Plumbers" },
+    { "id": 2, "value": "Electrical", "label": "Electricians" },
+    { "id": 3, "value": "HVAC", "label": "HVAC" },
+    { "id": 4, "value": "Cleaning", "label": "Cleaners" },
+    { "id": 5, "value": "Painting", "label": "Painters" },
+    { "id": 6, "value": "Landscaping", "label": "Landscapers" }
+  ],
   "services": [
     {
-      "id": 1,
-      "name": "Haircut",
-      "price": 500
+      "id": "1",
+      "name": "Oslo Pipe Pros",
+      "category": "Plumbing",
+      "rating": 4.6,
+      "reviewCount": 128,
+      "address": "Storgata 12, Oslo",
+      "phone": "+47 900 00 001",
+      "imageUrl": "https://picsum.photos/seed/1/200",
+      "price": 120,
+      "distanceMiles": 0.8,
+      "tags": ["PLUMBING", "EMERGENCY"]
     },
     {
-      "id": 2,
-      "name": "Facial",
-      "price": 1000
-    }
-  ],
-  "categories": [
+      "id": "2",
+      "name": "Frogner Leak Repair",
+      "category": "Plumbing",
+      "rating": 4.2,
+      "reviewCount": 64,
+      "address": "Bygdoy Alle 5, Oslo",
+      "phone": "+47 900 00 002",
+      "imageUrl": "https://picsum.photos/seed/2/200",
+      "price": 65,
+      "distanceMiles": 2.1,
+      "tags": ["PLUMBING"]
+    },
     {
-      "id": 1,
-      "name": "Beauty"
+      "id": "3",
+      "name": "VoltSafe Solutions",
+      "category": "Electrical",
+      "rating": 4.8,
+      "reviewCount": 240,
+      "address": "Karl Johans Gate 22, Oslo",
+      "phone": "+47 900 00 003",
+      "imageUrl": "https://picsum.photos/seed/3/200",
+      "price": 220,
+      "distanceMiles": 1.2,
+      "tags": ["ELECTRICAL", "CERTIFIED"]
+    },
+    {
+      "id": "4",
+      "name": "Gronland Electric",
+      "category": "Electrical",
+      "rating": 3.9,
+      "reviewCount": 41,
+      "address": "Gronlandsleiret 8, Oslo",
+      "phone": "+47 900 00 004",
+      "imageUrl": "https://picsum.photos/seed/4/200",
+      "price": 55,
+      "distanceMiles": 3.4,
+      "tags": ["ELECTRICAL"]
+    },
+    {
+      "id": "5",
+      "name": "Nordic Air Comfort",
+      "category": "HVAC",
+      "rating": 4.5,
+      "reviewCount": 97,
+      "address": "Majorstuen 3, Oslo",
+      "phone": "+47 900 00 005",
+      "imageUrl": "https://picsum.photos/seed/5/200",
+      "price": 140,
+      "distanceMiles": 1.7,
+      "tags": ["HVAC", "CERTIFIED"]
+    },
+    {
+      "id": "6",
+      "name": "Oslo Climate Control",
+      "category": "HVAC",
+      "rating": 4.0,
+      "reviewCount": 53,
+      "address": "Torshov 14, Oslo",
+      "phone": "+47 900 00 006",
+      "imageUrl": "https://picsum.photos/seed/6/200",
+      "price": 110,
+      "distanceMiles": 4.0,
+      "tags": ["HVAC"]
+    },
+    {
+      "id": "7",
+      "name": "Sparkle Home Cleaning",
+      "category": "Cleaning",
+      "rating": 4.9,
+      "reviewCount": 312,
+      "address": "St. Hanshaugen 9, Oslo",
+      "phone": "+47 900 00 007",
+      "imageUrl": "https://picsum.photos/seed/7/200",
+      "price": 80,
+      "distanceMiles": 0.5,
+      "tags": ["CLEANING", "ECO-FRIENDLY"]
+    },
+    {
+      "id": "8",
+      "name": "Fresh Nordic Cleaners",
+      "category": "Cleaning",
+      "rating": 3.7,
+      "reviewCount": 28,
+      "address": "Grunerlokka 2, Oslo",
+      "phone": "+47 900 00 008",
+      "imageUrl": "https://picsum.photos/seed/8/200",
+      "price": 60,
+      "distanceMiles": 2.9,
+      "tags": ["CLEANING"]
+    },
+    {
+      "id": "9",
+      "name": "Fjord Painting Co.",
+      "category": "Painting",
+      "rating": 4.4,
+      "reviewCount": 76,
+      "address": "Vika 6, Oslo",
+      "phone": "+47 900 00 009",
+      "imageUrl": "https://picsum.photos/seed/9/200",
+      "price": 150,
+      "distanceMiles": 1.5,
+      "tags": ["PAINTING", "INTERIOR"]
+    },
+    {
+      "id": "10",
+      "name": "Oslo Brush & Roll",
+      "category": "Painting",
+      "rating": 3.5,
+      "reviewCount": 19,
+      "address": "Kampen 11, Oslo",
+      "phone": "+47 900 00 010",
+      "imageUrl": "https://picsum.photos/seed/10/200",
+      "price": 70,
+      "distanceMiles": 3.8,
+      "tags": ["PAINTING"]
+    },
+    {
+      "id": "11",
+      "name": "Green Fjord Landscaping",
+      "category": "Landscaping",
+      "rating": 4.7,
+      "reviewCount": 145,
+      "address": "Nordberg 4, Oslo",
+      "phone": "+47 900 00 011",
+      "imageUrl": "https://picsum.photos/seed/11/200",
+      "price": 200,
+      "distanceMiles": 2.4,
+      "tags": ["LANDSCAPING", "CERTIFIED"]
+    },
+    {
+      "id": "12",
+      "name": "Oslo Garden Care",
+      "category": "Landscaping",
+      "rating": 4.1,
+      "reviewCount": 58,
+      "address": "Ekeberg 7, Oslo",
+      "phone": "+47 900 00 012",
+      "imageUrl": "https://picsum.photos/seed/12/200",
+      "price": 95,
+      "distanceMiles": 5.1,
+      "tags": ["LANDSCAPING"]
     }
   ]
 }
+ 
