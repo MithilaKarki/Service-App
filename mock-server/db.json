@@ -1,0 +1,20 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "Haircut",
+      "price": 500
+    },
+    {
+      "id": 2,
+      "name": "Facial",
+      "price": 1000
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Beauty"
+    }
+  ]
+}
