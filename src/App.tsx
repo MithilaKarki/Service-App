@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import ServiceList from "./components/ServiceList";
 import CategoryFilterRow from "./components/CategoryFilterRow";
+import FilterSidebar from "./components/FilterSidebar";
 import { ALL_CATEGORIES,ANY_RATING, type Category,
 type Service, type CategoryFilterValue,type RatingFilterValue } from "./types";
 
@@ -17,17 +18,18 @@ function App() {
   // categoryFilter ma current state ko value xa meaning ALL, 
   // ani setfunc bhitra chai state change bhako category basxa
 
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilterValue>(ALL_CATEGORIES)
   const [ratingFilter, setRatingFilter] = useState<RatingFilterValue>(ANY_RATING);
 
 
   const [categories, setCategories] = useState<Category[]>([]);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
-  const [categoriesError, setCategoriesError] = useState<String | null>(null);
+  const [categoriesError, setCategoriesError] = useState<string | null>(null);
 
   const [services, setServices] = useState<Service[]> ([]);
   const [servicesLoading, setServicesLoading] = useState(true);
-  const [serviceError, setServicesError] = useState<String | null> (null);
+  const [serviceError, setServicesError] = useState<string | null> (null);
 
 
   useEffect(() =>{
@@ -68,8 +70,16 @@ function App() {
   }, []);
 
   return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="flex justify-end mb-4">
+        <button
+          onClick={() => setIsFilterOpen(true)}
+          className="flex items-center gap-2 border rounded-md px-3 py-1.5 text-sm bg-white shadow-sm"
+        >
+          ⚙ Filter
+        </button>
+      </div>
 
-   <div className="min-h-screen bg-gray-100 p-6">
       {categoriesLoading ? (
         <p className="text-gray-400 text-sm">Loading categories…</p>
       ) : categoriesError ? (
@@ -89,16 +99,25 @@ function App() {
       ) : serviceError ? (
         <p className="text-red-500 text-center py-12">{serviceError}</p>
       ) : (
-        <ServiceList 
-        services={services} categoryFilter={categoryFilter} 
-        ratingFilter={ratingFilter}
+        <ServiceList
+          services={services}
+          categoryFilter={categoryFilter}
+          ratingFilter={ratingFilter}
         />
       )}
 
       <p className="mt-4 text-sm text-gray-500">Selected: {categoryFilter}</p>
+
+      <FilterSidebar
+        isOpen={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+        categories={categories}
+        categoryFilter={categoryFilter}
+        onCategoryChange={setCategoryFilter}
+        ratingFilter={ratingFilter}
+        onRatingChange={setRatingFilter}
+      />
     </div>
-
-
   );
 }
 
