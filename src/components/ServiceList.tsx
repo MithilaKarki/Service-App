@@ -1,27 +1,29 @@
 import ServiceCard from "./ServiceCard";
-import type { Service, CategoryFilterValue } from "../types";
-import {ALL_CATEGORIES} from "../types";
+import type { Service, CategoryFilterValue, RatingFilterValue } from "../types";
+import {ALL_CATEGORIES,ANY_RATING } from "../types";
 
 
 interface ServiceListProps{
   services : Service[];
   categoryFilter : CategoryFilterValue;
+  ratingFilter: RatingFilterValue;
 }
 
-export default function ServiceList({services,
-  categoryFilter}:ServiceListProps) {
-  const filteredServices = categoryFilter === ALL_CATEGORIES
-  ? services
-  : services.filter((service) => service.category === categoryFilter);
-  
-  if (filteredServices.length == 0)
-  {
-  return(
-    <p className = "mt-6 text-center text-gray-500">
-      No services found in this category
-    </p>
-  )
-}
+export default function ServiceList({
+  services,
+  categoryFilter,
+  ratingFilter,
+}:ServiceListProps) {
+    
+  const filteredServices = services.filter((service) => {
+  const matchesCategory =
+    categoryFilter === ALL_CATEGORIES || service.category === categoryFilter;
+
+  const matchesRating =
+    ratingFilter === ANY_RATING || service.rating >= ratingFilter;
+
+  return matchesCategory && matchesRating;
+});
 
 
 // map ma array loop garna milxa 
