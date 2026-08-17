@@ -6,7 +6,7 @@ import { ALL_CATEGORIES,ANY_RATING, type Category,
 type Service, type CategoryFilterValue,type RatingFilterValue } from "./types";
 import { Routes, Route } from "react-router-dom";
 import Description from "./components/Descpt";
-
+import SearchBar from "./components/SearchBar";
 import RatingFilterRow from "./components/RatingFilterRow";
 
 import db from "../mock-server/db.json"
@@ -32,6 +32,11 @@ function App() {
   const [servicesLoading, setServicesLoading] = useState(true);
   const [serviceError, setServicesError] = useState<string | null> (null);
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const searchedServices = services.filter((s) =>
+    s.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   useEffect(() =>{
     const fetchCategories = async () => {
@@ -76,7 +81,8 @@ function App() {
         path="/"
         element={
           <div className="min-h-screen bg-gray-100 p-6">
-            <div className="flex justify-end mb-4">
+            <div className="flex justify-between items-center mb-4 gap-3">
+              <SearchBar value={searchQuery} onChange={setSearchQuery} />
               <button
                 onClick={() => setIsFilterOpen(true)}
                 className="flex items-center gap-2 border rounded-md px-3 py-1.5 text-sm bg-white shadow-sm"
@@ -105,7 +111,7 @@ function App() {
               <p className="text-red-500 text-center py-12">{serviceError}</p>
             ) : (
               <ServiceList
-                services={services}
+                services={searchedServices}
                 categoryFilter={categoryFilter}
                 ratingFilter={ratingFilter}
               />
@@ -123,6 +129,8 @@ function App() {
               onRatingChange={setRatingFilter}
             />
           </div>
+
+          
         }
       />
       <Route path="/service/:id" element={<Description services={services} />} />
