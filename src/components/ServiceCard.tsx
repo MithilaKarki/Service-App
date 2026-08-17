@@ -1,5 +1,5 @@
 import type { Service } from "../types";  //service interface import gareko 
-
+import {Link} from "react-router-dom";
 
 interface ServiceCardProps {    //servicard le service use garnai parxa bhanera we fprce here service interface
   service: Service;
@@ -39,9 +39,12 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           ))}
         </div>
 
-        <button className="mt-3 border border-blue-600 text-blue-600 text-sm font-medium py-1.5 rounded hover:bg-blue-50 transition">
+          <Link
+          to={`/service/${service.id}`}
+          className="mt-3 border border-blue-600 text-blue-600 text-sm font-medium py-1.5 rounded hover:bg-blue-50 transition text-center block"
+        >
           View Profile
-        </button>
+        </Link>
       </div>
     </div>
   );
