@@ -4,14 +4,15 @@ import CategoryFilterRow from "./components/CategoryFilterRow";
 import FilterSidebar from "./components/FilterSidebar";
 import { ALL_CATEGORIES,ANY_RATING, type Category,
 type Service, type CategoryFilterValue,type RatingFilterValue } from "./types";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Description from "./components/Descpt";
 import SearchBar from "./components/SearchBar";
 import RatingFilterRow from "./components/RatingFilterRow";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
-import db from "../mock-server/db.json"
 
-const API_BASE_URL = "http://localhost:3001";
+const API_BASE_URL = "http://localhost:8000/api";
 
 function App() {
   // first render ma "ALL-category" ma initial state basxa as ALL in UI
@@ -38,14 +39,18 @@ function App() {
     s.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+
+
   useEffect(() =>{
     const fetchCategories = async () => {
       try{
         setCategoriesLoading(true);
         setCategoriesError(null);
-        const res = await fetch(`${API_BASE_URL}/categories`);
+        const res = await fetch(`${API_BASE_URL}/categories/`);
         if(!res.ok) throw new Error(`Status ${res.status}`);
-        setCategories(await res.json());
+        const json = await res.json();
+        setCategories(json.data ?? json);
+
       }
       catch(err)
       {
@@ -63,9 +68,10 @@ function App() {
       try {
         setServicesLoading(true);
         setServicesError(null);
-        const res = await fetch(`${API_BASE_URL}/services`);
+        const res = await fetch(`${API_BASE_URL}/services/`);
         if (!res.ok) throw new Error(`Status ${res.status}`);
-        setServices(await res.json());
+        const json = await res.json();
+        setServices(json.data ?? json);
       } catch (err) {
         setServicesError(err instanceof Error ? err.message : "Failed to load services");
       } finally {
@@ -78,7 +84,7 @@ function App() {
   return (
     <Routes>
       <Route
-        path="/"
+        path="/services"
         element={
           <div className="min-h-screen bg-gray-100 p-6">
             <div className="flex justify-between items-center mb-4 gap-3">
@@ -133,8 +139,13 @@ function App() {
           
         }
       />
+
+      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/login" element={<Login />}/>
+      <Route path="/signup" element={<Signup />}/>
       <Route path="/service/:id" element={<Description services={services} />} />
-    </Routes>
+
+      </Routes>
   );
 }
 

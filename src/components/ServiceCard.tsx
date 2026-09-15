@@ -21,7 +21,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
 
       <div className="p-4 flex flex-col gap-1 flex-1">
         <h3 className="font-semibold text-gray-900">{name}</h3>
-        <p className="text-sm text-gray-500">{category}</p>
+        <p className="text-sm text-gray-500">{category.label}</p>
         <p className="text-xs text-gray-400">({reviewCount} reviews)</p>
         <p className="font-bold text-gray-900 mt-1">
           ${price}

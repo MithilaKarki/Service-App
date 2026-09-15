@@ -29,7 +29,7 @@ export default function Description({ services }: DescriptionProps) {
         <img src={imageUrl} alt={name} className="w-full h-60 object-cover" />
         <div className="p-6">
           <h1 className="text-2xl font-bold">{name}</h1>
-          <p className="text-gray-500">{category}</p>
+          <p className="text-gray-500">{category.label}</p>
           <p className="text-sm text-gray-400">★ {rating} ({reviewCount} reviews)</p>
           <p className="mt-2 font-bold text-lg">${price}<span className="font-normal text-gray-500">/hr</span></p>
           <p className="mt-2 text-sm text-gray-600">{address}</p>

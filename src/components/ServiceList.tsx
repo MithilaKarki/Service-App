@@ -17,7 +17,7 @@ export default function ServiceList({
     
   const filteredServices = services.filter((service) => {
   const matchesCategory =
-    categoryFilter === ALL_CATEGORIES || service.category === categoryFilter;
+    categoryFilter === ALL_CATEGORIES || service.category.value === categoryFilter;
 
   const matchesRating =
     ratingFilter === ANY_RATING || service.rating >= ratingFilter;

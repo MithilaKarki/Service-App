@@ -1,7 +1,7 @@
 export interface Service {
   id: string;
   name: string;
-  category: string;
+  category: Category;
   rating: number;
   reviewCount: number;
   address: string;
